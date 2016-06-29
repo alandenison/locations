@@ -2,6 +2,7 @@ using Nancy;
 using Places;
 using System.Collections.Generic;
 
+
 namespace Places
 {
   public class HomeModule : NancyModule
@@ -16,7 +17,7 @@ namespace Places
         return View["Places_List.cshtml", allPlaces];
       };
       Post["/Places"] = _ => {
-        Place newPlace = new Place(Request.Form["new-place"]);
+        Place newPlace = new Place(Request.Form["new-place"], Request.Form["new-desc"], Request.Form["new-image"]);
         List<Place> allPlaces = Place.GetAll();
         return View["Places_List.cshtml", allPlaces];
       };
